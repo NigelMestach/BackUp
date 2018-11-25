@@ -40,14 +40,27 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
                 } else {
                     self.descriptionLabel.text = "There is no description for " + self.title! + "."
                 }
+                
                 self.tableView.delegate = self
                 self.tableView.dataSource = self
-                
+                self.updateTable()
             }
         }
         task.resume()
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         print(character.comics.items)
+    }
+    
+    func updateTable(){
+        if self.character.comics.items.count == 0 {
+            let noComics: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+            noComics.text          = "No comics, come back later"
+            noComics.textAlignment = .center
+            noComics.textColor     = UIColor.gray
+            self.tableView.backgroundView  = noComics
+            self.tableView.separatorStyle  = UITableViewCell.SeparatorStyle.none
+            self.tableView.reloadData()
+        }
     }
 
     
