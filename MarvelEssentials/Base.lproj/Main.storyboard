@@ -92,18 +92,18 @@
                                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWy-c5-MPl">
                                                                             <rect key="frame" x="20" y="8" width="386" height="27.5"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tD-1o-M7y">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tD-1o-M7y">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="193" height="27.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1g3-J1-re5">
+                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlT-u1-F7F">
                                                                                     <rect key="frame" x="193" y="0.0" width="193" height="27.5"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                    <nil key="textColor"/>
-                                                                                    <nil key="highlightedColor"/>
-                                                                                </label>
+                                                                                    <connections>
+                                                                                        <action selector="buttonTapped:" destination="ZF0-Jy-W4L" eventType="touchUpInside" id="Vp2-PN-0si"/>
+                                                                                    </connections>
+                                                                                </button>
                                                                             </subviews>
                                                                         </stackView>
                                                                     </subviews>
@@ -116,7 +116,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="comicLabel" destination="7tD-1o-M7y" id="nNq-dm-mw4"/>
-                                                                    <outlet property="savedLabel" destination="1g3-J1-re5" id="0Ff-cJ-TnC"/>
+                                                                    <outlet property="savedButton" destination="ZlT-u1-F7F" id="4Td-2W-zVr"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>

@@ -9,8 +9,9 @@
 import UIKit
 
 class ComicTableViewCell: UITableViewCell {
-    @IBOutlet weak var savedLabel: UILabel!
+   
     
+    @IBOutlet weak var savedButton: UIButton!
     @IBOutlet weak var comicLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

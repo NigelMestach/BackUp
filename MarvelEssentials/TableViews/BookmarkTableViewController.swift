@@ -15,6 +15,7 @@ class BookmarkTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bookmarks = MarvelDataController.sharedController.bookmarks
+        checkIfEmpty()
         self.tableView.reloadData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,8 +27,21 @@ class BookmarkTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bookmarks = MarvelDataController.sharedController.bookmarks
+        checkIfEmpty()
         self.tableView.reloadData()
         
+    }
+    
+    func checkIfEmpty(){
+        if self.bookmarks.count == 0 {
+            let noBookmarks: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+            noBookmarks.text          = "Add comics to bookmark them"
+            noBookmarks.textAlignment = .center
+            noBookmarks.textColor     = UIColor.gray
+            self.tableView.backgroundView  = noBookmarks
+            self.tableView.separatorStyle  = UITableViewCell.SeparatorStyle.none
+            self.tableView.reloadData()
+        }
     }
     
 

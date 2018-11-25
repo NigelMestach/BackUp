@@ -91,6 +91,9 @@ class MarvelDataController{
         bookmarks.append(comic)
     }
     
+    func removeBookmark(comic: Int){
+        bookmarks.remove(at: comic)
+    }
 }
 
 extension Date {

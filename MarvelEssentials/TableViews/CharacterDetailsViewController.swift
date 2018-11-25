@@ -9,7 +9,7 @@
 import UIKit
 
 class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var character: Character!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -21,7 +21,7 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
         let picURL = character.thumbnail.path + "/standard_xlarge." + character.thumbnail.exten
         updateUI(urlstr: picURL, imageView: imageView, description: character.description)
         
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -33,10 +33,10 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
             DispatchQueue.main.async {
                 imageView.image = UIImage(data: data)
                 /*
-                imageView.layer.cornerRadius = imageView.frame.size.width / 2.55
-                imageView.clipsToBounds = true */
+                 imageView.layer.cornerRadius = imageView.frame.size.width / 2.55
+                 imageView.clipsToBounds = true */
                 if description != "" {
-                self.descriptionLabel.text = description
+                    self.descriptionLabel.text = description
                 } else {
                     self.descriptionLabel.text = "There is no description for " + self.title! + "."
                 }
@@ -62,7 +62,7 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
             self.tableView.reloadData()
         }
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return character.comics.items.count // your number of cell here
@@ -72,23 +72,39 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "ComicCell", for: indexPath as IndexPath) as! ComicTableViewCell
         let comic = character.comics.items[indexPath.row]
         cell.comicLabel?.text = comic.name
-        cell.savedLabel?.text = "➕"
+        if !MarvelDataController.sharedController.bookmarks.contains(comic.name){
+            cell.savedButton?.setTitle("➕", for: .normal)
+        } else {
+            cell.savedButton?.setTitle("✔️", for: .normal)
+        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        MarvelDataController.sharedController.addBookmark(comic: character.comics.items[indexPath.row].name)
-        print(MarvelDataController.sharedController.bookmarks)
+    
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        let cell = sender.superview?.superview?.superview as? ComicTableViewCell
+        
+        let comic = cell?.comicLabel.text
+        let bookmark = MarvelDataController.sharedController
+        if !MarvelDataController.sharedController.bookmarks.contains(comic!){
+            bookmark.addBookmark(comic: comic!)
+            tableView.reloadData()
+        } else {
+            let position = bookmark.bookmarks.firstIndex(of: comic!)
+            bookmark.removeBookmark(comic: position!)
+            tableView.reloadData()
+        }
+        
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
