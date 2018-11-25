@@ -39,7 +39,8 @@ class SearchResultsTableViewController: UITableViewController {
                 noResult.textAlignment = .center
                 noResult.textColor     = UIColor.gray
                 self.tableView.backgroundView  = noResult
-                self.tableView.separatorStyle  = .none
+                self.tableView.separatorStyle  = UITableViewCell.SeparatorStyle.none
+                self.tableView.reloadData()
             }
         }
         

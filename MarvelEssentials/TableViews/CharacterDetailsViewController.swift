@@ -20,8 +20,7 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
         self.title = character.name
         let picURL = character.thumbnail.path + "/standard_xlarge." + character.thumbnail.exten
         updateUI(urlstr: picURL, imageView: imageView, description: character.description)
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        
 
         // Do any additional setup after loading the view.
     }
@@ -41,6 +40,8 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
                 } else {
                     self.descriptionLabel.text = "There is no description for " + self.title! + "."
                 }
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
                 
             }
         }
