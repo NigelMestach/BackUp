@@ -82,22 +82,42 @@
                                                         <rect key="frame" x="0.0" y="312.5" width="414" height="387.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicCell" textLabel="jxC-gP-hh6" style="IBUITableViewCellStyleDefault" id="AZ4-Sc-PBZ">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicCell" id="AZ4-Sc-PBZ" customClass="ComicTableViewCell" customModule="MarvelEssentials" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AZ4-Sc-PBZ" id="rFa-rQ-boe">
                                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jxC-gP-hh6">
-                                                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                                                            <autoresizingMask key="autoresizingMask"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWy-c5-MPl">
+                                                                            <rect key="frame" x="20" y="8" width="386" height="27.5"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tD-1o-M7y">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="193" height="27.5"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1g3-J1-re5">
+                                                                                    <rect key="frame" x="193" y="0.0" width="193" height="27.5"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="RWy-c5-MPl" firstAttribute="leading" secondItem="rFa-rQ-boe" secondAttribute="leading" constant="20" id="6Hq-0f-Zbf"/>
+                                                                        <constraint firstItem="RWy-c5-MPl" firstAttribute="top" secondItem="rFa-rQ-boe" secondAttribute="top" constant="8" id="8lX-uo-nfL"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="RWy-c5-MPl" secondAttribute="trailing" constant="8" id="Yrw-xb-SAY"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="RWy-c5-MPl" secondAttribute="bottom" constant="8" id="jsV-RA-Nze"/>
+                                                                    </constraints>
                                                                 </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="comicLabel" destination="7tD-1o-M7y" id="nNq-dm-mw4"/>
+                                                                    <outlet property="savedLabel" destination="1g3-J1-re5" id="0Ff-cJ-TnC"/>
+                                                                </connections>
                                                             </tableViewCell>
                                                         </prototypes>
                                                     </tableView>

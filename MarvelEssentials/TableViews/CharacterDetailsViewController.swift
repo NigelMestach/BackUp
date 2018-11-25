@@ -69,9 +69,10 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ComicCell", for: indexPath as IndexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ComicCell", for: indexPath as IndexPath) as! ComicTableViewCell
         let comic = character.comics.items[indexPath.row]
-        cell.textLabel?.text = comic.name
+        cell.comicLabel?.text = comic.name
+        cell.savedLabel?.text = "➕"
         return cell
     }
     
