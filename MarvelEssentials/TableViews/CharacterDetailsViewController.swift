@@ -76,9 +76,10 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
         return cell
     }
     
-    /*func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // cell selected code here
-    }*/
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        MarvelDataController.sharedController.addBookmark(comic: character.comics.items[indexPath.row].name)
+        print(MarvelDataController.sharedController.bookmarks)
+    }
     
     /*
     // MARK: - Navigation

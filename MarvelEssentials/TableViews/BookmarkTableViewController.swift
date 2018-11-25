@@ -9,38 +9,54 @@
 import UIKit
 
 class BookmarkTableViewController: UITableViewController {
+    
+    var bookmarks : [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        bookmarks = MarvelDataController.sharedController.bookmarks
+        self.tableView.reloadData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        bookmarks = MarvelDataController.sharedController.bookmarks
+        self.tableView.reloadData()
+        
+    }
+    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if bookmarks.count == 0 {
+            return 0
+            
+        } else {
+            return bookmarks.count
+        }
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell", for: indexPath)
+        cell.textLabel?.text = bookmarks[indexPath.row]
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

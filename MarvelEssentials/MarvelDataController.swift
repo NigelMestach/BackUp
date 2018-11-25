@@ -15,6 +15,7 @@ class MarvelDataController{
     static let sharedController = MarvelDataController()
     
     let baseURL = URL(string: "https://gateway.marvel.com/v1/public/characters")!
+    var bookmarks : [String] = []
     
     func fetchFullData(completion: @escaping (DataMarvel) -> Void)
     {
@@ -84,6 +85,10 @@ class MarvelDataController{
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
         
+    }
+    
+    func addBookmark(comic: String){
+        bookmarks.append(comic)
     }
     
 }
