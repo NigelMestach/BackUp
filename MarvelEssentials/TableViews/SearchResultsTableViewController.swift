@@ -11,17 +11,14 @@ import UIKit
 class SearchResultsTableViewController: UITableViewController {
 
     var characters: [Character] = []
+    var keyword : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Results for " + keyword
         
-        MarvelDataController.sharedController.fetchFullData { (container) in
-            if container.data.results.count > 0 {
-                
-                self.updateUI(characters : container.data.results)
-            } else {
-                print("There is nothing to be seen here - METHOD")
-            }
+        MarvelDataController.sharedController.fetchSearchedData(keyword: keyword) { (container) in
+                self.updateUI(characters: container.data.results, container: container)
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -31,10 +28,19 @@ class SearchResultsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func updateUI(characters : [Character]){
+    func updateUI(characters : [Character], container: DataMarvel){
         DispatchQueue.main.async {
+            if container.data.results.count > 0{
             self.characters = characters
             self.tableView.reloadData()
+            } else {
+                let noResult: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+                noResult.text          = "No results for " + self.keyword
+                noResult.textAlignment = .center
+                noResult.textColor     = UIColor.gray
+                self.tableView.backgroundView  = noResult
+                self.tableView.separatorStyle  = .none
+            }
         }
         
         
@@ -91,6 +97,8 @@ class SearchResultsTableViewController: UITableViewController {
         task.resume()
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
+    
+    
     
     
     /*

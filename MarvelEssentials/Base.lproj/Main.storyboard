@@ -226,10 +226,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="ckE-1x-sEF">
-                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="Cmq-eb-jaL"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="Cmq-eb-jaL">
+                            <connections>
+                                <segue destination="JoX-V9-avB" kind="unwind" unwindAction="unwindToSearchWithSegue:" id="h4l-MG-o63"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6I-TC-vTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JoX-V9-avB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3316" y="1556"/>
         </scene>
@@ -269,6 +274,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="searchChanged:" destination="52d-69-IZQ" eventType="editingChanged" id="axA-su-Fnc"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmz-Pn-bPo">
                                 <rect key="frame" x="20" y="471" width="374" height="30"/>
@@ -296,6 +304,7 @@
                     <navigationItem key="navigationItem" id="dOK-w8-Yib"/>
                     <connections>
                         <outlet property="searchField" destination="h6C-BS-hUo" id="RIU-ex-9Xz"/>
+                        <outlet property="submitButton" destination="zmz-Pn-bPo" id="Xyc-lE-czF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgC-vZ-uMP" userLabel="First Responder" sceneMemberID="firstResponder"/>

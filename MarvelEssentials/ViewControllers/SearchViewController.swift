@@ -10,10 +10,13 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var searchField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        submitButton.isEnabled = false
+        
 
         // Do any additional setup after loading the view.
     }
@@ -21,12 +24,23 @@ class SearchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender:
         Any?) {
         if segue.identifier == "searchSegue" {
-            //let searchNav = segue.destination as! UINavigationController
-            //let searchTable = searchNav.topViewController
-            
+            let searchNav = segue.destination as! UINavigationController
+            let searchTable = searchNav.topViewController as! SearchResultsTableViewController
+            searchTable.keyword = searchField.text
+            searchField.text?.removeAll()
         }
     }
     
+    
+    @IBAction func searchChanged(_ sender: Any) {
+        let text = searchField.text ?? ""
+        submitButton.isEnabled = !text.isEmpty
+    }
+    
+    @IBAction func unwindToSearch(segue: UIStoryboardSegue) {
+    submitButton.isEnabled = false
+    }
+
     
     /*
     // MARK: - Navigation
