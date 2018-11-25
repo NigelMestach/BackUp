@@ -69,6 +69,8 @@ class SearchResultsTableViewController: UITableViewController {
     }
     
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        //temp hide labele
+        cell.textLabel?.text = " "
         let character = characters[indexPath.row]
         let picURL = character.thumbnail.path + "/standard_small." + character.thumbnail.exten
         updateCell(urlstr: picURL, imageView: cell.imageView, textLabel : cell.textLabel, characterName: character.name )
