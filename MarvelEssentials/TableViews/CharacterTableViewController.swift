@@ -15,7 +15,7 @@ class CharacterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAndCheck()
+       
         
         
         // Uncomment the following line to preserve selection between presentations

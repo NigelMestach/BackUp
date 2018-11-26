@@ -34,16 +34,22 @@ class MarvelDataController{
         let jsonDecoder = JSONDecoder()
         let task = URLSession.shared.dataTask(with: url) {
             (data, response, error) in
-                
-                if let data = data {
-                    let marvel = try? jsonDecoder.decode(DataMarvel.self, from: data)
+            
+            if let data = data {
+                let marvel = try? jsonDecoder.decode(DataMarvel.self, from: data)
+                //testen op foute data binnekrijgen
+                if marvel != nil {
                     completion(marvel, false)
+                    print("succes")
                 } else {
-                    print("failed")
                     completion(nil, true)
-                    
                 }
-          
+            } else {
+                print("failed")
+                completion(nil, true)
+                
+            }
+            
             
             
         }
