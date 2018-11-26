@@ -17,8 +17,15 @@ class SearchResultsTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "Results for " + keyword
         
-        MarvelDataController.sharedController.fetchSearchedData(keyword: keyword) { (container) in
-                self.updateUI(characters: container.data.results, container: container)
+        MarvelDataController.sharedController.fetchSearchedData(keyword: keyword) { (container, error) in
+            if error {
+                let alert = UIAlertController(title: "Warning", message: "There is no connection to the Marvel Database", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
+            self.updateUI(characters: container?.data.results)
+            
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -28,9 +35,9 @@ class SearchResultsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func updateUI(characters : [Character], container: DataMarvel){
+    func updateUI(characters : [Character]?){
         DispatchQueue.main.async {
-            if container.data.results.count > 0{
+            if let characters = characters, characters.count > 0 {
             self.characters = characters
             self.tableView.reloadData()
             } else {

@@ -15,21 +15,47 @@ class CharacterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAndCheck()
         
-        MarvelDataController.sharedController.fetchFullData { (container) in
-            if container.data.results.count > 0 {
-                
-                self.updateUI(characters : container.data.results)
-            } else {
-                print("There is nothing to be seen here - METHOD")
-            }
-        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if characters.count == 0 {
+        getAndCheck()
+        }
+    }
+    func getAndCheck() {
+        MarvelDataController.sharedController.fetchFullData { (container, error) in
+            if error {
+                // label in table
+                DispatchQueue.main.async {
+                    let noConnection: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+                    noConnection.text          = "There is no connection"
+                    noConnection.textAlignment = .center
+                    noConnection.textColor     = UIColor.gray
+                    self.tableView.backgroundView  = noConnection
+                    self.tableView.separatorStyle  = UITableViewCell.SeparatorStyle.none
+                
+                // pop up
+                let alert = UIAlertController(title: "Warning", message: "There is no connection to the Marvel Database", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                }
+                
+            } else {
+                self.updateUI(characters : container!.data.results)
+                self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+            }
+            
+        }
+        
     }
     
     func updateUI(characters : [Character]){
@@ -50,6 +76,7 @@ class CharacterTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if characters.count == 0 {
+            self.tableView.separatorStyle  = UITableViewCell.SeparatorStyle.none
             return 0
         } else {
             return characters.count

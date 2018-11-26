@@ -107,7 +107,6 @@
 		A64A6CD121A8B28800F3A1A2 = {
 			isa = PBXGroup;
 			children = (
-				A650B4E621AAF279006E9C85 /* Cell */,
 				A64A6CDC21A8B28900F3A1A2 /* MarvelEssentials */,
 				A64A6CF121A8B28B00F3A1A2 /* MarvelEssentialsTests */,
 				A64A6CFC21A8B28B00F3A1A2 /* MarvelEssentialsUITests */,
@@ -128,6 +127,8 @@
 		A64A6CDC21A8B28900F3A1A2 /* MarvelEssentials */ = {
 			isa = PBXGroup;
 			children = (
+				A687D40121AC95F3003DB403 /* Shared */,
+				A650B4E621AAF279006E9C85 /* Cell */,
 				A6DC84A621AA100100B30A81 /* ViewControllers */,
 				A695A0C121A9777E00CE6C44 /* Hash */,
 				A695A0B621A9737C00CE6C44 /* Models */,
@@ -137,8 +138,6 @@
 				A64A6CE421A8B28B00F3A1A2 /* Assets.xcassets */,
 				A64A6CE621A8B28B00F3A1A2 /* LaunchScreen.storyboard */,
 				A64A6CE921A8B28B00F3A1A2 /* Info.plist */,
-				A695A0BF21A9750200CE6C44 /* MarvelDataController.swift */,
-				A695A0C421A97B9D00CE6C44 /* URL+Helpers.swift */,
 			);
 			path = MarvelEssentials;
 			sourceTree = "<group>";
@@ -178,6 +177,15 @@
 				A650B4E721AAF300006E9C85 /* ComicTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A687D40121AC95F3003DB403 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A695A0C421A97B9D00CE6C44 /* URL+Helpers.swift */,
+				A695A0BF21A9750200CE6C44 /* MarvelDataController.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		A695A0B621A9737C00CE6C44 /* Models */ = {

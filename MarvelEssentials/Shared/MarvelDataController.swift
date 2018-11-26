@@ -17,7 +17,7 @@ class MarvelDataController{
     let baseURL = URL(string: "https://gateway.marvel.com/v1/public/characters")!
     var bookmarks : [String] = []
     
-    func fetchFullData(completion: @escaping (DataMarvel) -> Void)
+    func fetchFullData(completion: @escaping (DataMarvel?, Bool) -> Void)
     {
         let timestamp = String(Date().toTimeStamp())
         let hash = timestamp+"43618d074125e4ca97283c68601102b724e8b2d4"+"0fdac27ed5044f2ffc9aca8081c1ccf5"
@@ -34,15 +34,16 @@ class MarvelDataController{
         let jsonDecoder = JSONDecoder()
         let task = URLSession.shared.dataTask(with: url) {
             (data, response, error) in
-            try? jsonDecoder.decode(DataMarvel.self, from: data!)
-            if let data = data,
-                let marvel = try? jsonDecoder.decode(DataMarvel.self, from: data) {
-                print("gelukt")
-                completion(marvel)
-            } else {
-                print("failed")
                 
-            }
+                if let data = data {
+                    let marvel = try? jsonDecoder.decode(DataMarvel.self, from: data)
+                    completion(marvel, false)
+                } else {
+                    print("failed")
+                    completion(nil, true)
+                    
+                }
+          
             
             
         }
@@ -52,7 +53,7 @@ class MarvelDataController{
         
     }
     
-    func fetchSearchedData(keyword: String, completion: @escaping (DataMarvel) -> Void)
+    func fetchSearchedData(keyword: String, completion: @escaping (DataMarvel?, Bool) -> Void)
     {
         let timestamp = String(Date().toTimeStamp())
         let hash = timestamp+"43618d074125e4ca97283c68601102b724e8b2d4"+"0fdac27ed5044f2ffc9aca8081c1ccf5"
@@ -69,13 +70,12 @@ class MarvelDataController{
         let jsonDecoder = JSONDecoder()
         let task = URLSession.shared.dataTask(with: url) {
             (data, response, error) in
-            try? jsonDecoder.decode(DataMarvel.self, from: data!)
-            if let data = data,
-                let marvel = try? jsonDecoder.decode(DataMarvel.self, from: data) {
+            if let data = data {
+                let marvel = try? jsonDecoder.decode(DataMarvel.self, from: data)
                 print("succes keyword")
-                completion(marvel)
+                completion(marvel, false)
             } else {
-                print("failed, no results for keyword")
+                completion(nil, true)
                 
             }
             

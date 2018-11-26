@@ -29,7 +29,18 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let url = URL(string: urlstr)!
         let task = URLSession.shared.dataTask(with: url.withHTTPS()!) { data, _, _ in
-            guard let data = data else { return }
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Warning", message: "There is no connection to the Marvel Database", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
+                
+                return
+                
+            }
             DispatchQueue.main.async {
                 imageView.image = UIImage(data: data)
                 /*
@@ -52,14 +63,16 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func updateTable(){
-        if self.character.comics.items.count == 0 {
-            let noComics: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
-            noComics.text          = "No comics, come back later"
-            noComics.textAlignment = .center
-            noComics.textColor     = UIColor.gray
-            self.tableView.backgroundView  = noComics
-            self.tableView.separatorStyle  = UITableViewCell.SeparatorStyle.none
-            self.tableView.reloadData()
+        DispatchQueue.main.async {
+            if self.character.comics.items.count == 0 {
+                let noComics: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+                noComics.text          = "No comics, come back later"
+                noComics.textAlignment = .center
+                noComics.textColor     = UIColor.gray
+                self.tableView.backgroundView  = noComics
+                self.tableView.separatorStyle  = UITableViewCell.SeparatorStyle.none
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -82,19 +95,34 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
     
     
     @IBAction func buttonTapped(_ sender: UIButton) {
-        let cell = sender.superview?.superview?.superview as? ComicTableViewCell
-        
-        let comic = cell?.comicLabel.text
-        let bookmark = MarvelDataController.sharedController
-        if !MarvelDataController.sharedController.bookmarks.contains(comic!){
-            bookmark.addBookmark(comic: comic!)
-            tableView.reloadData()
-        } else {
-            let position = bookmark.bookmarks.firstIndex(of: comic!)
-            bookmark.removeBookmark(comic: position!)
-            tableView.reloadData()
+        DispatchQueue.main.async {
+            
+            let cell = sender.superview?.superview?.superview as? ComicTableViewCell
+            
+            //animation
+            
+            UIView.animate(withDuration: 0.2,
+                           animations: {
+                            cell?.savedButton.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+            },
+                           completion: { _ in
+                            UIView.animate(withDuration: 0.2) {
+                                cell?.savedButton.transform = CGAffineTransform.identity
+                            }
+            })
+            
+            
+            let comic = cell?.comicLabel.text
+            let bookmark = MarvelDataController.sharedController
+            if !MarvelDataController.sharedController.bookmarks.contains(comic!){
+                bookmark.addBookmark(comic: comic!)
+                self.tableView.reloadData()
+            } else {
+                let position = bookmark.bookmarks.firstIndex(of: comic!)
+                bookmark.removeBookmark(comic: position!)
+                self.tableView.reloadData()
+            }
         }
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

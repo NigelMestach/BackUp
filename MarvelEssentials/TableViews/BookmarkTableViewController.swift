@@ -39,23 +39,26 @@ class BookmarkTableViewController: UITableViewController {
     }
     
     func checkIfEmpty(){
-        let noBookmarks: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
-        if self.bookmarks.count == 0 {
-            noBookmarks.text          = "Add comics to bookmark them"
-            noBookmarks.textAlignment = .center
-            noBookmarks.textColor     = UIColor.gray
-            self.tableView.backgroundView  = noBookmarks
-            self.tableView.separatorStyle  = UITableViewCell.SeparatorStyle.none
-        } else {
-            let labels = self.view.subviews.compactMap { $0 as? UILabel }
+        //niet in thread anders is de seperator er niet
+        DispatchQueue.main.async {
             
-            for label in labels {
-                label.text=""
-                print(label.text)
+            let noBookmarks: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+            if self.bookmarks.count == 0 {
+                noBookmarks.text          = "Add comics to bookmark them"
+                noBookmarks.textAlignment = .center
+                noBookmarks.textColor     = UIColor.gray
+                self.tableView.backgroundView  = noBookmarks
+                self.tableView.separatorStyle  = UITableViewCell.SeparatorStyle.none
+                self.tableView.reloadData()
+            } else {
+                let labels = self.view.subviews.compactMap { $0 as? UILabel }
+                
+                for label in labels {
+                    label.text=""
+                }
+                self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
             }
-            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
         }
-        
         
     }
     
@@ -95,7 +98,7 @@ class BookmarkTableViewController: UITableViewController {
             bookmarks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             MarvelDataController.sharedController.bookmarks.remove(at: indexPath.row)
-            tableView.reloadData()
+            
             checkIfEmpty()
         }
         
