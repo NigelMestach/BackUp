@@ -12,6 +12,7 @@ class CharacterTableViewController: UITableViewController {
     
     
     var characters: [Character] = []
+    var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,17 +25,30 @@ class CharacterTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    //SOURCE : https://gkbrown.org/2015/12/07/displaying-an-activity-indicator-while-loading-data-in-the-background/
+    override func loadView() {
+        super.loadView()
+        
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        
+        tableView.backgroundView = activityIndicatorView
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if characters.count == 0 {
+            activityIndicatorView.startAnimating()
         getAndCheck()
         }
     }
     func getAndCheck() {
         MarvelDataController.sharedController.fetchFullData { (container, error) in
             if error {
+                
                 // label in table
                 DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
                     let noConnection: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
                     noConnection.text          = "There is no connection"
                     noConnection.textAlignment = .center
@@ -61,6 +75,7 @@ class CharacterTableViewController: UITableViewController {
     func updateUI(characters : [Character]){
         DispatchQueue.main.async {
             self.characters = characters
+            self.activityIndicatorView.stopAnimating()
             self.tableView.reloadData()
         }
         
