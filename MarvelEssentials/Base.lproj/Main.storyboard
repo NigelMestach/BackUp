@@ -72,7 +72,7 @@
                                                             <constraint firstAttribute="height" constant="240" id="isf-0Z-Hit"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFe-1x-OTc">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFe-1x-OTc">
                                                         <rect key="frame" x="20" y="248" width="374" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -292,8 +292,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Search🔍:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxL-o0-xTn">
-                                <rect key="frame" x="20" y="401" width="113" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search🔍:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxL-o0-xTn">
+                                <rect key="frame" x="20" y="401" width="394" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -327,6 +327,7 @@
                             <constraint firstItem="h6C-BS-hUo" firstAttribute="centerX" secondItem="HU7-L5-roO" secondAttribute="centerX" id="leC-jW-KaO"/>
                             <constraint firstItem="h6C-BS-hUo" firstAttribute="top" secondItem="WxL-o0-xTn" secondAttribute="bottom" constant="8" id="mco-aB-DbF"/>
                             <constraint firstItem="I7h-F0-Gak" firstAttribute="trailing" secondItem="zmz-Pn-bPo" secondAttribute="trailing" constant="20" id="uOH-0T-qNN"/>
+                            <constraint firstItem="I7h-F0-Gak" firstAttribute="trailing" secondItem="WxL-o0-xTn" secondAttribute="trailing" id="vsA-GV-GF1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I7h-F0-Gak"/>
                     </view>

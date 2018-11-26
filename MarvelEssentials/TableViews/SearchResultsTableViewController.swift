@@ -12,11 +12,12 @@ class SearchResultsTableViewController: UITableViewController {
 
     var characters: [Character] = []
     var keyword : String!
+    var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Results for " + keyword
-        
+        activityIndicatorView.startAnimating()
         MarvelDataController.sharedController.fetchSearchedData(keyword: keyword) { (container, error) in
             if error {
                 let alert = UIAlertController(title: "Warning", message: "There is no connection to the Marvel Database", preferredStyle: .alert)
@@ -24,6 +25,7 @@ class SearchResultsTableViewController: UITableViewController {
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
             }
+            
             self.updateUI(characters: container?.data.results)
             
         }
@@ -35,8 +37,18 @@ class SearchResultsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    //SOURCE : https://gkbrown.org/2015/12/07/displaying-an-activity-indicator-while-loading-data-in-the-background/
+    override func loadView() {
+        super.loadView()
+        
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        
+        tableView.backgroundView = activityIndicatorView
+    }
+    
     func updateUI(characters : [Character]?){
         DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
             if let characters = characters, characters.count > 0 {
             self.characters = characters
             self.tableView.reloadData()
