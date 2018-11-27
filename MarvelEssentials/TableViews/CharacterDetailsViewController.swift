@@ -23,9 +23,7 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
         let picURL = character.thumbnail.path + "/standard_xlarge." + character.thumbnail.exten
         activityIndicatorView.startAnimating()
         updateUI(urlstr: picURL, imageView: imageView, description: character.description)
-        
-        
-        // Do any additional setup after loading the view.
+
     }
     
     override func loadView() {
