@@ -11,18 +11,29 @@ import UIKit
 class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var character: Character!
+    var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = character.name
         let picURL = character.thumbnail.path + "/standard_xlarge." + character.thumbnail.exten
+        activityIndicatorView.startAnimating()
         updateUI(urlstr: picURL, imageView: imageView, description: character.description)
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func loadView() {
+        super.loadView()
+        
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        
+        tableView.backgroundView = activityIndicatorView
     }
     
     func updateUI(urlstr: String, imageView: UIImageView, description: String) {
@@ -31,6 +42,7 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
         let task = URLSession.shared.dataTask(with: url.withHTTPS()!) { data, _, _ in
             guard let data = data else {
                 DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
                     let alert = UIAlertController(title: "Warning", message: "There is no connection to the Marvel Database", preferredStyle: .alert)
                     let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
                     alert.addAction(action)
@@ -46,6 +58,7 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
                 /*
                  imageView.layer.cornerRadius = imageView.frame.size.width / 2.55
                  imageView.clipsToBounds = true */
+                self.activityIndicatorView.stopAnimating()
                 if description != "" {
                     self.descriptionLabel.text = description
                 } else {
