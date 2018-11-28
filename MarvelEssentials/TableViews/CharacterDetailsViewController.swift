@@ -114,11 +114,11 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
             
             UIView.animate(withDuration: 0.2,
                            animations: {
-                            cell?.savedButton.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+                            sender.transform = CGAffineTransform(rotationAngle: 360)
             },
                            completion: { _ in
                             UIView.animate(withDuration: 0.2) {
-                                cell?.savedButton.transform = CGAffineTransform.identity
+                                sender.transform = CGAffineTransform.identity
                             }
             })
             
