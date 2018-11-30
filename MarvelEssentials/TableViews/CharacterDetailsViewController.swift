@@ -38,6 +38,7 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
         if let photo = character.cache {
             
             imageView.image = photo
+            updateText(description)
             
         } else {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true

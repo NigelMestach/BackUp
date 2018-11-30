@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Featured Characters-->
+        <!--Loading...-->
         <scene sceneID="TiK-2u-Gy4">
             <objects>
                 <collectionViewController id="1XD-je-6p4" customClass="CollectionViewController" customModule="MarvelEssentials" customModuleProvider="target" sceneMemberID="viewController">
@@ -66,11 +66,11 @@
                             <outlet property="delegate" destination="1XD-je-6p4" id="z5P-nF-e4c"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Featured Characters" id="FrF-eL-hmw"/>
+                    <navigationItem key="navigationItem" title="Loading..." id="FrF-eL-hmw"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5YN-KO-21Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2355.072463768116" y="-609.375"/>
+            <point key="canvasLocation" x="1441" y="-609"/>
         </scene>
         <!--Featured Characters-->
         <scene sceneID="q5w-cO-Zq0">
@@ -242,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVz-fr-G6y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2269.5652173913045" y="66.964285714285708"/>
+            <point key="canvasLocation" x="4086" y="117"/>
         </scene>
         <!--Bookmarks-->
         <scene sceneID="D2x-C7-jfq">
@@ -449,10 +449,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="MLh-4c-mQM" kind="relationship" relationship="viewControllers" id="pvP-Fz-eUq"/>
+                        <segue destination="Kdt-fF-pNt" kind="relationship" relationship="viewControllers" id="pmK-0a-7AX"/>
                         <segue destination="XmD-y4-Xjw" kind="relationship" relationship="viewControllers" id="rC0-Kw-yfx"/>
                         <segue destination="wF3-O5-OS8" kind="relationship" relationship="viewControllers" id="a6b-wu-y9a"/>
-                        <segue destination="Kdt-fF-pNt" kind="relationship" relationship="viewControllers" id="pmK-0a-7AX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xep-aO-sGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -482,7 +481,7 @@
         <scene sceneID="Vvu-su-F9Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kdt-fF-pNt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="5Rz-yN-mMV"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="5Rz-yN-mMV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ha0-3B-No4">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
