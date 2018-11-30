@@ -35,6 +35,11 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func updateUI(urlstr: String, imageView: UIImageView, description: String) {
+        if let photo = character.cache {
+            
+            imageView.image = photo
+            
+        } else {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let url = URL(string: urlstr)!
         let task = URLSession.shared.dataTask(with: url.withHTTPS()!) { data, _, _ in
@@ -56,23 +61,29 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
                 /*
                  imageView.layer.cornerRadius = imageView.frame.size.width / 2.55
                  imageView.clipsToBounds = true */
-                self.activityIndicatorView.stopAnimating()
-                if description != "" {
-                    self.descriptionLabel.text = description
-                } else {
-                    self.descriptionLabel.text = "There is no description for " + self.title! + "."
-                }
-                
-                self.tableView.delegate = self
-                self.tableView.dataSource = self
-                self.updateTable()
+                self.updateText(description)
             }
         }
         task.resume()
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        print(character.comics.items)
+        }
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.updateTable()
     }
     
+    func updateText(_ description: String){
+        self.activityIndicatorView.stopAnimating()
+        if description != "" {
+            self.descriptionLabel.text = description
+        } else {
+            self.descriptionLabel.text = "There is no description for " + self.title! + "."
+        }
+        
+        
+        
+        
+    }
     func updateTable(){
         DispatchQueue.main.async {
             if self.character.comics.items.count == 0 {
@@ -106,34 +117,35 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
     
     
     @IBAction func buttonTapped(_ sender: UIButton) {
-        DispatchQueue.main.async {
-            
+//        DispatchQueue.main.async {
+//
             let cell = sender.superview?.superview?.superview as? ComicTableViewCell
-            
+        
             //animation
             
-            UIView.animate(withDuration: 0.2,
+            UIView.animate(withDuration: 0.6,
                            animations: {
                             sender.transform = CGAffineTransform(rotationAngle: 360)
             },
                            completion: { _ in
-                            UIView.animate(withDuration: 0.2) {
+                            UIView.animate(withDuration: 0.6) {
                                 sender.transform = CGAffineTransform.identity
                             }
             })
-            
-            
+        
             let comic = cell?.comicLabel.text
             let bookmark = MarvelDataController.sharedController
             if !MarvelDataController.sharedController.bookmarks.contains(comic!){
                 bookmark.addBookmark(comic: comic!)
-                self.tableView.reloadData()
+                let indexpath = self.tableView.indexPath(for: cell!)
+                self.tableView.reloadRows(at: [indexpath!], with: .automatic)
             } else {
                 let position = bookmark.bookmarks.firstIndex(of: comic!)
                 bookmark.removeBookmark(comic: position!)
-                self.tableView.reloadData()
+                let indexpath = self.tableView.indexPath(for: cell!)
+                self.tableView.reloadRows(at: [indexpath!], with: .automatic)
             }
-        }
+//        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

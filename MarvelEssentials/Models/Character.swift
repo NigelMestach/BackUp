@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 struct Character: Decodable {
     var name: String
     var description: String
     var thumbnail : Image
     var comics: ComicList
+    var cache: UIImage?
     //var url: Image
     
     

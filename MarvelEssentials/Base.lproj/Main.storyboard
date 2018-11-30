@@ -10,6 +10,69 @@
     </dependencies>
     <scenes>
         <!--Featured Characters-->
+        <scene sceneID="TiK-2u-Gy4">
+            <objects>
+                <collectionViewController id="1XD-je-6p4" customClass="CollectionViewController" customModule="MarvelEssentials" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="DA9-qE-ZOi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1zH-KZ-1TR">
+                            <size key="itemSize" width="195" height="215"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="characterColCell" id="974-ez-GDh" customClass="CharacterCollectionViewCell" customModule="MarvelEssentials" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="195" height="215"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="195" height="215"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ELF-Q3-2pL">
+                                            <rect key="frame" x="10" y="8" width="175" height="150"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="0Ej-K6-v7K"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s96-TK-Lbf">
+                                            <rect key="frame" x="8" y="166" width="179" height="0.0"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="s96-TK-Lbf" secondAttribute="trailing" id="Dur-yA-eBR"/>
+                                    <constraint firstItem="s96-TK-Lbf" firstAttribute="top" secondItem="ELF-Q3-2pL" secondAttribute="bottom" constant="8" id="Hiv-rR-t6P"/>
+                                    <constraint firstItem="s96-TK-Lbf" firstAttribute="centerX" secondItem="974-ez-GDh" secondAttribute="centerX" id="Q4u-A8-gDs"/>
+                                    <constraint firstItem="ELF-Q3-2pL" firstAttribute="top" secondItem="974-ez-GDh" secondAttribute="top" constant="8" id="eFM-nl-rS9"/>
+                                    <constraint firstItem="s96-TK-Lbf" firstAttribute="leading" secondItem="974-ez-GDh" secondAttribute="leadingMargin" id="fXa-AU-1cl"/>
+                                    <constraint firstAttribute="trailing" secondItem="ELF-Q3-2pL" secondAttribute="trailing" constant="10" id="lQQ-uI-jum"/>
+                                    <constraint firstItem="ELF-Q3-2pL" firstAttribute="leading" secondItem="974-ez-GDh" secondAttribute="leading" constant="10" id="shg-mt-rPI"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="image" destination="ELF-Q3-2pL" id="9f9-ss-T6w"/>
+                                    <outlet property="nameLabel" destination="s96-TK-Lbf" id="ddE-Uv-kiE"/>
+                                    <segue destination="ZF0-Jy-W4L" kind="show" identifier="CharacterSegue" id="E8d-gf-zaG"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="1XD-je-6p4" id="T3r-bt-3h3"/>
+                            <outlet property="delegate" destination="1XD-je-6p4" id="z5P-nF-e4c"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Featured Characters" id="FrF-eL-hmw"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5YN-KO-21Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2355.072463768116" y="-609.375"/>
+        </scene>
+        <!--Featured Characters-->
         <scene sceneID="q5w-cO-Zq0">
             <objects>
                 <tableViewController id="7Qh-bP-LIf" customClass="CharacterTableViewController" customModule="MarvelEssentials" customModuleProvider="target" sceneMemberID="viewController">
@@ -389,6 +452,7 @@
                         <segue destination="MLh-4c-mQM" kind="relationship" relationship="viewControllers" id="pvP-Fz-eUq"/>
                         <segue destination="XmD-y4-Xjw" kind="relationship" relationship="viewControllers" id="rC0-Kw-yfx"/>
                         <segue destination="wF3-O5-OS8" kind="relationship" relationship="viewControllers" id="a6b-wu-y9a"/>
+                        <segue destination="Kdt-fF-pNt" kind="relationship" relationship="viewControllers" id="pmK-0a-7AX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xep-aO-sGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -414,8 +478,27 @@
             </objects>
             <point key="canvasLocation" x="489.85507246376818" y="1567.6339285714284"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vvu-su-F9Y">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kdt-fF-pNt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="5Rz-yN-mMV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ha0-3B-No4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1XD-je-6p4" kind="relationship" relationship="rootViewController" id="MIr-KF-Oo1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="df1-gs-5sf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="491" y="-609"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rwN-EY-PiC"/>
+        <segue reference="E8d-gf-zaG"/>
     </inferredMetricsTieBreakers>
 </document>

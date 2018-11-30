@@ -17,6 +17,8 @@
 		A64A6D0C21A8BA9200F3A1A2 /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64A6D0B21A8BA9200F3A1A2 /* CharacterTableViewController.swift */; };
 		A64A6D0E21A8BAE900F3A1A2 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64A6D0D21A8BAE900F3A1A2 /* BookmarkTableViewController.swift */; };
 		A650B4E821AAF300006E9C85 /* ComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A650B4E721AAF300006E9C85 /* ComicTableViewCell.swift */; };
+		A676550F21B01DCB002DFA42 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676550E21B01DCB002DFA42 /* CollectionViewController.swift */; };
+		A676551121B02402002DFA42 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676551021B02402002DFA42 /* CharacterCollectionViewCell.swift */; };
 		A695A0B821A973DB00CE6C44 /* DataMarvel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695A0B721A973DB00CE6C44 /* DataMarvel.swift */; };
 		A695A0BA21A9740D00CE6C44 /* CharacterDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695A0B921A9740D00CE6C44 /* CharacterDataContainer.swift */; };
 		A695A0BC21A9743000CE6C44 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695A0BB21A9743000CE6C44 /* Character.swift */; };
@@ -65,6 +67,8 @@
 		A64A6D0B21A8BA9200F3A1A2 /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
 		A64A6D0D21A8BAE900F3A1A2 /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
 		A650B4E721AAF300006E9C85 /* ComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicTableViewCell.swift; sourceTree = "<group>"; };
+		A676550E21B01DCB002DFA42 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		A676551021B02402002DFA42 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		A695A0B721A973DB00CE6C44 /* DataMarvel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMarvel.swift; sourceTree = "<group>"; };
 		A695A0B921A9740D00CE6C44 /* CharacterDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataContainer.swift; sourceTree = "<group>"; };
 		A695A0BB21A9743000CE6C44 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				A650B4E721AAF300006E9C85 /* ComicTableViewCell.swift */,
+				A676551021B02402002DFA42 /* CharacterCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 			children = (
 				A64A6CDF21A8B28900F3A1A2 /* ViewController.swift */,
 				A6DC84A721AA101D00B30A81 /* SearchViewController.swift */,
+				A676550E21B01DCB002DFA42 /* CollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A676550F21B01DCB002DFA42 /* CollectionViewController.swift in Sources */,
 				A6DC84AA21AA135800B30A81 /* SearchResultsTableViewController.swift in Sources */,
 				A6DC84A821AA101D00B30A81 /* SearchViewController.swift in Sources */,
 				A695A0C021A9750200CE6C44 /* MarvelDataController.swift in Sources */,
@@ -359,6 +366,7 @@
 				A695A0BA21A9740D00CE6C44 /* CharacterDataContainer.swift in Sources */,
 				A695A0BC21A9743000CE6C44 /* Character.swift in Sources */,
 				A6DC84A121A9D40300B30A81 /* CharacterDetailsViewController.swift in Sources */,
+				A676551121B02402002DFA42 /* CharacterCollectionViewCell.swift in Sources */,
 				A64A6CE021A8B28900F3A1A2 /* ViewController.swift in Sources */,
 				A64A6D0C21A8BA9200F3A1A2 /* CharacterTableViewController.swift in Sources */,
 				A64A6CDE21A8B28900F3A1A2 /* AppDelegate.swift in Sources */,
