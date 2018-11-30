@@ -70,44 +70,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5YN-KO-21Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="-609"/>
-        </scene>
-        <!--Featured Characters-->
-        <scene sceneID="q5w-cO-Zq0">
-            <objects>
-                <tableViewController id="7Qh-bP-LIf" customClass="CharacterTableViewController" customModule="MarvelEssentials" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hkz-ka-Pfm" customClass="character">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CharacterCell" textLabel="2OE-D7-gFU" style="IBUITableViewCellStyleDefault" id="MEc-r6-Deu">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MEc-r6-Deu" id="Hch-z9-CDH">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2OE-D7-gFU">
-                                            <rect key="frame" x="20" y="0.0" width="356" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ZF0-Jy-W4L" kind="show" identifier="CharacterSegue" id="GWQ-3i-sc9"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Featured Characters" id="A0q-GF-pud"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zzr-0K-XrQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1440.8" y="64.31784107946028"/>
+            <point key="canvasLocation" x="1442" y="69"/>
         </scene>
         <!--Character Details View Controller-->
         <scene sceneID="EZO-kH-AH3">
@@ -242,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVz-fr-G6y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4086" y="117"/>
+            <point key="canvasLocation" x="4139" y="790"/>
         </scene>
         <!--Bookmarks-->
         <scene sceneID="D2x-C7-jfq">
@@ -421,23 +384,6 @@
             </objects>
             <point key="canvasLocation" x="492" y="790.25487256371821"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="MgU-ga-0pA">
-            <objects>
-                <navigationController id="MLh-4c-mQM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" systemItem="featured" id="Kxj-he-K6f"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Wyu-0l-11P">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="7Qh-bP-LIf" kind="relationship" relationship="rootViewController" id="mGp-u6-gYc"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yh8-Ac-1HK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="488.80000000000001" y="64.31784107946028"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="VZl-0Q-8fD">
             <objects>
@@ -494,7 +440,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df1-gs-5sf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="491" y="-609"/>
+            <point key="canvasLocation" x="491" y="69"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
