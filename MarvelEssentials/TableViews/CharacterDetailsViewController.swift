@@ -108,7 +108,7 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "ComicCell", for: indexPath as IndexPath) as! ComicTableViewCell
         let comic = character.comics.items[indexPath.row]
         cell.comicLabel?.text = comic.name
-        if !MarvelDataController.sharedController.bookmarks.comics.contains(comic.name){
+        if !MarvelDataController.sharedController.bookmarks.contains(comic.name){
             cell.savedButton?.setTitle("➕", for: .normal)
         } else {
             cell.savedButton?.setTitle("✔️", for: .normal)
@@ -136,13 +136,14 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
         
             let comic = cell?.comicLabel.text
             let bookmark = MarvelDataController.sharedController.bookmarks
-            if !bookmark.comics.contains(comic!){
-                bookmark.addBookmark(comic: comic!)
+            if !bookmark.contains(comic!){
+                MarvelDataController.sharedController.saveToBookmarks(comic!)
                 let indexpath = self.tableView.indexPath(for: cell!)
                 self.tableView.reloadRows(at: [indexpath!], with: .automatic)
             } else {
-                let position = bookmark.comics.firstIndex(of: comic!)
-                bookmark.removeBookmark(comic: position!)
+                let position = bookmark.firstIndex(of: comic!)
+                MarvelDataController.sharedController.bookmarks.remove(at: position!)
+                MarvelDataController.sharedController.saveBookmarks()
                 let indexpath = self.tableView.indexPath(for: cell!)
                 self.tableView.reloadRows(at: [indexpath!], with: .automatic)
             }

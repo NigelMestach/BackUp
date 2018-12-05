@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Bookmarks{
+class Bookmarks: Codable{
     
     var comics: [String] = []
     
