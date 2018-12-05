@@ -15,7 +15,7 @@ class BookmarkTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
-        bookmarks = MarvelDataController.sharedController.bookmarks
+        bookmarks = MarvelDataController.sharedController.bookmarks.comics
         checkIfEmpty()
         self.tableView.reloadData()
         // Uncomment the following line to preserve selection between presentations
@@ -32,7 +32,7 @@ class BookmarkTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        bookmarks = MarvelDataController.sharedController.bookmarks
+        bookmarks = MarvelDataController.sharedController.bookmarks.comics
         checkIfEmpty()
         self.tableView.reloadData()
         
@@ -97,7 +97,7 @@ class BookmarkTableViewController: UITableViewController {
             // Delete the row from the data source
             bookmarks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            MarvelDataController.sharedController.bookmarks.remove(at: indexPath.row)
+            MarvelDataController.sharedController.bookmarks.comics.remove(at: indexPath.row)
             
             checkIfEmpty()
         }
@@ -105,8 +105,9 @@ class BookmarkTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let moved = bookmarks.remove(at: fromIndexPath.row)
-        bookmarks.insert(moved, at: to.row)
+        let moved = MarvelDataController.sharedController.bookmarks.comics.remove(at: fromIndexPath.row)
+        MarvelDataController.sharedController.bookmarks.comics.insert(moved, at: to.row)
+        bookmarks = MarvelDataController.sharedController.bookmarks.comics
         tableView.reloadData()
         
         

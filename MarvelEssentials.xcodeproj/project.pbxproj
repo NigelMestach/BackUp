@@ -25,6 +25,7 @@
 		A695A0C021A9750200CE6C44 /* MarvelDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695A0BF21A9750200CE6C44 /* MarvelDataController.swift */; };
 		A695A0C321A9779F00CE6C44 /* MD5Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695A0C221A9779F00CE6C44 /* MD5Digest.swift */; };
 		A695A0C521A97B9D00CE6C44 /* URL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695A0C421A97B9D00CE6C44 /* URL+Helpers.swift */; };
+		A6C5F9A421B81A5C0041F451 /* Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C5F9A321B81A5C0041F451 /* Bookmarks.swift */; };
 		A6DC84A121A9D40300B30A81 /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DC84A021A9D40300B30A81 /* CharacterDetailsViewController.swift */; };
 		A6DC84A321AA051800B30A81 /* ComicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DC84A221AA051800B30A81 /* ComicList.swift */; };
 		A6DC84A521AA05CC00B30A81 /* ComicSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DC84A421AA05CC00B30A81 /* ComicSummary.swift */; };
@@ -74,6 +75,7 @@
 		A695A0BF21A9750200CE6C44 /* MarvelDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDataController.swift; sourceTree = "<group>"; };
 		A695A0C221A9779F00CE6C44 /* MD5Digest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5Digest.swift; sourceTree = "<group>"; };
 		A695A0C421A97B9D00CE6C44 /* URL+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Helpers.swift"; sourceTree = "<group>"; };
+		A6C5F9A321B81A5C0041F451 /* Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmarks.swift; sourceTree = "<group>"; };
 		A6DC84A021A9D40300B30A81 /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		A6DC84A221AA051800B30A81 /* ComicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicList.swift; sourceTree = "<group>"; };
 		A6DC84A421AA05CC00B30A81 /* ComicSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSummary.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				A695A0BB21A9743000CE6C44 /* Character.swift */,
 				A695A0BD21A9745B00CE6C44 /* Image.swift */,
 				A6DC84A421AA05CC00B30A81 /* ComicSummary.swift */,
+				A6C5F9A321B81A5C0041F451 /* Bookmarks.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6C5F9A421B81A5C0041F451 /* Bookmarks.swift in Sources */,
 				A676550F21B01DCB002DFA42 /* CollectionViewController.swift in Sources */,
 				A6DC84AA21AA135800B30A81 /* SearchResultsTableViewController.swift in Sources */,
 				A6DC84A821AA101D00B30A81 /* SearchViewController.swift in Sources */,

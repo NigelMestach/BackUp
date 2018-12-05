@@ -15,10 +15,14 @@ class MarvelDataController{
     static let sharedController = MarvelDataController()
     
     let baseURL = URL(string: "https://gateway.marvel.com/v1/public/characters")!
-    var bookmarks : [String] = []
+    var bookmarks : Bookmarks = Bookmarks()
     
     func fetchFullData(completion: @escaping (DataMarvel?, Bool) -> Void)
     {
+        if bookmarks.comics.count == 0 {
+            //get from memory
+        }
+        
         let timestamp = String(Date().toTimeStamp())
         let hash = timestamp+"43618d074125e4ca97283c68601102b724e8b2d4"+"0fdac27ed5044f2ffc9aca8081c1ccf5"
         let query: [String: String] = [
@@ -93,13 +97,6 @@ class MarvelDataController{
         
     }
     
-    func addBookmark(comic: String){
-        bookmarks.append(comic)
-    }
-    
-    func removeBookmark(comic: Int){
-        bookmarks.remove(at: comic)
-    }
 }
 
 extension Date {
