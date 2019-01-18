@@ -21,6 +21,7 @@ class ViewController: UITabBarController {
         
         //Starts animation
         revealingSplashView.startAnimation(){
+            
             print("Completed")
         }
         

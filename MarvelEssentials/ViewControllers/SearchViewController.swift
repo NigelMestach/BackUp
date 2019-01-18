@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var searchField: UITextField!
@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.isEnabled = false
+        searchField.delegate = self
         
 
         // Do any additional setup after loading the view.
@@ -29,6 +30,11 @@ class SearchViewController: UIViewController {
             searchTable.keyword = searchField.text
             searchField.text?.removeAll()
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     

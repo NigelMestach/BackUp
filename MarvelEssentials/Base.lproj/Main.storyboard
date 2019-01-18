@@ -328,7 +328,7 @@
                                 <rect key="frame" x="20" y="433" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="searchChanged:" destination="52d-69-IZQ" eventType="editingChanged" id="axA-su-Fnc"/>
                                 </connections>
