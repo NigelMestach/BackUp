@@ -13,8 +13,9 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController {
     let reuseIdentifier = "characterColCell"
+    let datacontroller = MarvelDataController.sharedController
     var characters: [Character] = []
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class CollectionViewController: UICollectionViewController {
         
     }
     func getAndCheck() {
-        MarvelDataController.sharedController.fetchFullData { (container, error) in
+        datacontroller.fetchFullData { (container, error) in
             if error {
                 
                 
@@ -92,7 +93,6 @@ class CollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CharacterCollectionViewCell
         
         // Configure the cell
-        
         let character = characters[indexPath.row]
         cell.position = indexPath.row
         let picURL = character.thumbnail.path + "/standard_xlarge." + character.thumbnail.exten

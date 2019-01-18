@@ -9,7 +9,7 @@
 import UIKit
 
 class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+    let datacontroller = MarvelDataController.sharedController
     var character: Character!
     var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
@@ -135,15 +135,15 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
             })
         
             let comic = cell?.comicLabel.text
-            let bookmark = MarvelDataController.sharedController.bookmarks
+            let bookmark = datacontroller.bookmarks
             if !bookmark.contains(comic!){
-                MarvelDataController.sharedController.saveToBookmarks(comic!)
+                datacontroller.saveToBookmarks(comic!)
                 let indexpath = self.tableView.indexPath(for: cell!)
                 self.tableView.reloadRows(at: [indexpath!], with: .automatic)
             } else {
                 let position = bookmark.firstIndex(of: comic!)
-                MarvelDataController.sharedController.bookmarks.remove(at: position!)
-                MarvelDataController.sharedController.saveBookmarks()
+                datacontroller.bookmarks.remove(at: position!)
+                datacontroller.saveBookmarks()
                 let indexpath = self.tableView.indexPath(for: cell!)
                 self.tableView.reloadRows(at: [indexpath!], with: .automatic)
             }

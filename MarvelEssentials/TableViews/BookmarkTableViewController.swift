@@ -9,13 +9,13 @@
 import UIKit
 
 class BookmarkTableViewController: UITableViewController {
-    
+    let datacontroller = MarvelDataController.sharedController
     var bookmarks : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
-        bookmarks = MarvelDataController.sharedController.bookmarks
+        bookmarks = datacontroller.bookmarks
         checkIfEmpty()
         self.tableView.reloadData()
         // Uncomment the following line to preserve selection between presentations
@@ -32,7 +32,7 @@ class BookmarkTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        bookmarks = MarvelDataController.sharedController.bookmarks
+        bookmarks = datacontroller.bookmarks
         checkIfEmpty()
         self.tableView.reloadData()
         
@@ -97,19 +97,18 @@ class BookmarkTableViewController: UITableViewController {
             // Delete the row from the data source
             bookmarks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            MarvelDataController.sharedController.bookmarks.remove(at: indexPath.row)
-            MarvelDataController.sharedController.saveBookmarks()
-            
+            datacontroller.bookmarks.remove(at: indexPath.row)
+            datacontroller.saveBookmarks()
             checkIfEmpty()
         }
         
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let moved = MarvelDataController.sharedController.bookmarks.remove(at: fromIndexPath.row)
-        MarvelDataController.sharedController.bookmarks.insert(moved, at: to.row)
-        bookmarks = MarvelDataController.sharedController.bookmarks
-        MarvelDataController.sharedController.saveBookmarks()
+        let moved = datacontroller.bookmarks.remove(at: fromIndexPath.row)
+        datacontroller.bookmarks.insert(moved, at: to.row)
+        bookmarks = datacontroller.bookmarks
+        datacontroller.saveBookmarks()
         tableView.reloadData()
         
         
