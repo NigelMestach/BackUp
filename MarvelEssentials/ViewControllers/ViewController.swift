@@ -20,10 +20,7 @@ class ViewController: UITabBarController {
         self.view.addSubview(revealingSplashView)
         
         //Starts animation
-        revealingSplashView.startAnimation(){
-            
-            print("Completed")
-        }
+        revealingSplashView.startAnimation()
         
     }
 
