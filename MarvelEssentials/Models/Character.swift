@@ -15,7 +15,6 @@ struct Character: Decodable {
     var thumbnail : Image
     var comics: ComicList
     var cache: UIImage?
-    //var url: Image
     
     
     
@@ -25,13 +24,11 @@ struct Character: Decodable {
         case description = "description"
         case thumbnail = "thumbnail"
         case comics = "comics"
-        //case url = "thumbnail"
         
     }
     init(from decoder: Decoder) throws {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
-        /*        let valueContainer = try decoder.container(keyedBy: DataMarvel.CodingKeys.self).nestedContainer(keyedBy: Result.CodingKeys.self, forKey: .result).nestedContainer(keyedBy: Character.CodingKeys.self, forKey: .characters)*/
-        /*decoder.container(keyedBy:DataMarvel.CodingKeys.self).nestedContainer(keyedBy: Result.CodingKeys.self, forKey: .result).nestedContainer(keyedBy: Character.CodingKeys.self, forKey: .characters)*/
+
         if let name = try valueContainer.decodeIfPresent(String.self, forKey: CodingKeys.name) {
             self.name = name
         } else {

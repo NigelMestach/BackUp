@@ -20,11 +20,6 @@ class CollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Loading..."
-        //getAndCheck()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
     }
     func getAndCheck() {
         datacontroller.fetchFullData { (container, error) in
@@ -63,17 +58,6 @@ class CollectionViewController: UICollectionViewController {
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -92,7 +76,7 @@ class CollectionViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CharacterCollectionViewCell
         
-        // Configure the cell
+        // Configuring the cell
         let character = characters[indexPath.row]
         cell.position = indexPath.row
         let picURL = character.thumbnail.path + "/standard_xlarge." + character.thumbnail.exten

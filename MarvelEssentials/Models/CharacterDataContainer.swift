@@ -14,12 +14,4 @@ struct CharacterDataContainer : Decodable{
         case results = "results"
         
     }
-    /*
-     init(from decoder: Decoder) throws {
-     let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
-     self.results = try valueContainer.decode([Character].self,
-     forKey: CodingKeys.results)
-     
-     }*/
-    
 }

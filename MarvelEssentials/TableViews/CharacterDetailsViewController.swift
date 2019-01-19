@@ -59,9 +59,6 @@ class CharacterDetailsViewController: UIViewController, UITableViewDelegate, UIT
             }
             DispatchQueue.main.async {
                 imageView.image = UIImage(data: data)
-                /*
-                 imageView.layer.cornerRadius = imageView.frame.size.width / 2.55
-                 imageView.clipsToBounds = true */
                 self.updateText(description)
             }
         }

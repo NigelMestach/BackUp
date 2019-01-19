@@ -17,11 +17,8 @@ struct ComicSummary : Decodable {
     }
     init(from decoder: Decoder) throws {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
-        /*        let valueContainer = try decoder.container(keyedBy: DataMarvel.CodingKeys.self).nestedContainer(keyedBy: Result.CodingKeys.self, forKey: .result).nestedContainer(keyedBy: Character.CodingKeys.self, forKey: .characters)*/
-        /*decoder.container(keyedBy:DataMarvel.CodingKeys.self).nestedContainer(keyedBy: Result.CodingKeys.self, forKey: .result).nestedContainer(keyedBy: Character.CodingKeys.self, forKey: .characters)*/
         
         self.name = try valueContainer.decode(String.self, forKey: CodingKeys.name)
-        // self.url = try valueContainer.decode(URL.self, forKey: CodingKeys.url)
         
     }
     

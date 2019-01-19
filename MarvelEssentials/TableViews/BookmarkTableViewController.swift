@@ -18,11 +18,6 @@ class BookmarkTableViewController: UITableViewController {
         bookmarks = datacontroller.bookmarks
         checkIfEmpty()
         self.tableView.reloadData()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -39,7 +34,7 @@ class BookmarkTableViewController: UITableViewController {
     }
     
     func checkIfEmpty(){
-        //niet in thread anders is de seperator er niet
+        //Has to be in thread otherwise there's no seperator
         DispatchQueue.main.async {
             
             let noBookmarks: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
